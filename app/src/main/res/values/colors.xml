@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="titleColor">#8a8c93</color>
+    <color name="openColor">#37e793</color>
+    <color name="priceColor">#464955</color>
+    <color name="progressColor">#0ae17a</color>
+    <color name="progressBg">#e0e4e8</color>
 </resources>

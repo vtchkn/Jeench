@@ -1,6 +1,7 @@
 package com.example.evetochkin.jeench;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.example.evetochkin.jeench.adapters.ItemAdapter;
 import com.example.evetochkin.jeench.api.ApiFactory;
-import com.example.evetochkin.jeench.model.content.Item;
 import com.example.evetochkin.jeench.model.content.Message;
 import com.example.evetochkin.jeench.model.response.ItemResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mAdapter = new ItemAdapter(getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
     }
 
     private void loadItems() {

@@ -5,14 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.evetochkin.jeench.App;
 import com.example.evetochkin.jeench.R;
 import com.example.evetochkin.jeench.model.content.Item;
 import com.example.evetochkin.jeench.model.content.Message;
+import com.example.evetochkin.jeench.ui.RaitingView;
+import com.example.evetochkin.jeench.util.Currency;
 
 
 import java.util.ArrayList;
@@ -22,6 +28,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public Context context;
 
     private ArrayList<Message> data;
+
 
     public ItemAdapter(Context context) {
         this.context = context;
@@ -38,14 +45,20 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
     public void onBindViewHolder(ItemViewHolder holder, int position) {
         Message item = data.get(position);
         holder.itemName.setText(item.getItemName());
-        holder.itemPrice.setText(item.getItemPrice());
+        String itemPrice = item.getItemPrice();
+
+        holder.itemPrice.setText(App.currencyParser(itemPrice, Currency.RUB));
         holder.shopName.setText(item.getShopName());
         holder.pointDistance.setText(item.getPointDistance());
+        String trim = item.getPointRank().trim().substring(0,3);
+        holder.raitingView.update(Long.parseLong(trim));
         Glide.with(context)
                 .load(item.getItemImage())
+                .apply(new RequestOptions().fitCenter().centerCrop().placeholder(R.drawable.item_default).transforms(new RoundedCorners(20)))
                 .into(holder.itemImage);
         Glide.with(context)
                 .load(item.getShopLogo())
+                .apply(new RequestOptions().circleCrop().placeholder(R.drawable.shop_default))
                 .into(holder.shopLogo);
 
 
@@ -85,6 +98,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         TextView textView8;
         @BindView(R.id.shopLogo)
         ImageView shopLogo;
+        @BindView(R.id.raitingView)
+        RaitingView raitingView;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
