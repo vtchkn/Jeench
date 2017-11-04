@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
-apply plugin: 'realm-android'
 apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'android-apt'
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
@@ -11,6 +10,7 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "API_ENDPOINT", '"https://api.jeench.com/v1/"'
@@ -26,8 +26,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-apply from: '../versions.gradle'
+ext {
+    supportVersion = '26.0.0'
+    okhttpVersion = '3.9.0'
+    retrofitVersion = '2.3.0'
+    rxandroidVersion = '2.0.1'
+    rxjavaVersion = '2.1.5'
 
+    butterKnifeVersion = '8.8.1'
+    glideVersion = '4.3.0'
+
+}
+configurations {
+    compile.exclude group: 'stax'
+    compile.exclude group: 'xpp3'
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -45,7 +58,15 @@ dependencies {
     compile "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
     compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    compile "com.squareup.retrofit2:converter-simplexml:$retrofitVersion"
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'org.simpleframework:simple-xml:2.7.1'
+    compile ("com.squareup.retrofit2:converter-simplexml:$retrofitVersion"){
+        exclude group: 'xpp3', module: 'xpp3'
+        exclude group: 'stax', module: 'stax-api'
+        exclude group: 'stax', module: 'stax'
+    }
+
+    compile 'com.google.code.gson:gson:2.8.0'
     compile "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion"
 
     compile "io.reactivex.rxjava2:rxandroid:$rxandroidVersion"

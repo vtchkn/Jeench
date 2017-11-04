@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import com.example.evetochkin.jeench.adapters.ItemAdapter;
 import com.example.evetochkin.jeench.api.ApiFactory;
 import com.example.evetochkin.jeench.model.content.Item;
+import com.example.evetochkin.jeench.model.content.Message;
 import com.example.evetochkin.jeench.model.response.ItemResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ItemAdapter mAdapter;
 
-    private ArrayList<Item> items;
+    private ArrayList<Message> items;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
         mCompositeDisposable = new CompositeDisposable();
         ButterKnife.bind(this);
         loadUI();
+
         loadItems();
     }
 
     private void loadUI() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(layoutManager);
+        mAdapter = new ItemAdapter(getApplicationContext());
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     private void loadItems() {
@@ -57,14 +61,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleError(Throwable error) {
         Toast.makeText(this, "Load error: " + error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-        Log.d(LOAD_ITEMS + "error", error.getLocalizedMessage());
+        Log.d(LOAD_ITEMS, error.getMessage());
     }
 
     private void handleResponse(ItemResponse response) {
-        items = new ArrayList<>(response.getMessage().);
-        mAdapter = new DataAdapter(mAndroidArrayList);
-        mRecyclerView.setAdapter(mAdapter);
-        Log.d(LOAD_ITEMS, response.toString());
+        items = new ArrayList<>(response.getMessage());
+        mAdapter.clear();
+        mAdapter.addAll(items);
+
     }
 
     @Override

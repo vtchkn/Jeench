@@ -19,7 +19,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:srcCompat="@drawable/item-default"
+                card_view:srcCompat="@drawable/item_default"
                 android:id="@+id/itemImage"
                 android:layout_alignParentRight="false"
                 android:layout_alignParentLeft="true"
@@ -66,7 +66,7 @@
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:srcCompat="@drawable/shop-default"
+                card_view:srcCompat="@drawable/shop_default"
                 android:id="@+id/shopLogo"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="false"

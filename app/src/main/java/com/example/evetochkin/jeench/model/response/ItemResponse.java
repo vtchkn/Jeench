@@ -1,36 +1,34 @@
 package com.example.evetochkin.jeench.model.response;
 
 import com.example.evetochkin.jeench.model.content.Message;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import java.io.Serializable;
+import java.util.List;
 
-public class ItemResponse
-{
-    private Message message;
 
-    private String code;
+public class ItemResponse implements Serializable {
 
-    public Message getMessage ()
-    {
-        return message;
-    }
+    @SerializedName("code")
+    @Expose
+    private Integer code;
+    @SerializedName("message")
+    @Expose
+    private List<Message> message = null;
 
-    public void setMessage (Message message)
-    {
-        this.message = message;
-    }
-
-    public String getCode ()
-    {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode (String code)
-    {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    @Override
-    public String toString()
-    {
-        return "[message = "+message+", code = "+code+"]";
+    public List<Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message> message) {
+        this.message = message;
     }
 }

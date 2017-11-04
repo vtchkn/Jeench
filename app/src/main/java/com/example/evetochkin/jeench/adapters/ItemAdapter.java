@@ -1,5 +1,6 @@
 package com.example.evetochkin.jeench.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,19 +9,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.bumptech.glide.Glide;
 import com.example.evetochkin.jeench.R;
 import com.example.evetochkin.jeench.model.content.Item;
+import com.example.evetochkin.jeench.model.content.Message;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
+    public Context context;
 
+    private ArrayList<Message> data;
 
-    private ArrayList<Item> data;
-
-    public ItemAdapter(ArrayList<Item> data) {
-        this.data = data;
+    public ItemAdapter(Context context) {
+        this.context = context;
+        data = new ArrayList<>();
     }
 
     @Override
@@ -31,6 +36,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
     @Override
     public void onBindViewHolder(ItemViewHolder holder, int position) {
+        Message item = data.get(position);
+        holder.itemName.setText(item.getItemName());
+        holder.itemPrice.setText(item.getItemPrice());
+        holder.shopName.setText(item.getShopName());
+        holder.pointDistance.setText(item.getPointDistance());
+        Glide.with(context)
+                .load(item.getItemImage())
+                .into(holder.itemImage);
+        Glide.with(context)
+                .load(item.getShopLogo())
+                .into(holder.shopLogo);
+
 
     }
 
@@ -39,14 +56,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
         return data.size();
     }
 
-    public void addAll(List<Item> list) {
+    public void addAll(List<Message> list) {
         data.addAll(list);
         notifyDataSetChanged();
     }
 
-    public void add(Item item) {
+    public void add(Message item) {
         data.add(item);
         notifyDataSetChanged();
+    }
+
+    public void clear() {
+        data.clear();
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
