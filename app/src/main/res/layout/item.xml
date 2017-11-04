@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        card_view:cardCornerRadius="5dp">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:srcCompat="@drawable/item-default"
+                android:id="@+id/itemImage"
+                android:layout_alignParentRight="false"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="10dp"
+                android:contentDescription="@string/item_default"/>
+
+        <TextView
+                android:text="Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemName"
+                android:layout_toRightOf="@+id/itemImage"
+                android:layout_alignTop="@+id/itemImage"/>
+
+        <TextView
+                android:text="$2.42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemPrice"
+                android:layout_below="@+id/itemName"/>
+
+        <TextView
+                android:text="Starbucks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shopName"
+                android:layout_below="@+id/itemPrice"/>
+
+        <TextView
+                android:text="2 km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pointDistance"
+                android:layout_below="@+id/shopName"/>
+
+        <TextView
+                android:text="@string/open_now"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView8"
+                android:layout_alignTop="@+id/pointDistance"
+                android:layout_toRightOf="@+id/pointDistance"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:srcCompat="@drawable/shop-default"
+                android:id="@+id/shopLogo"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="false"
+                android:layout_alignTop="@+id/pointDistance"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
