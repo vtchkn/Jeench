@@ -22,8 +22,8 @@ public class App extends Application {
         TypefaceUtil.overrideFont(this, typefaces);
     }
     private void fontInit() {
-        typefaces.put("serif", "castle_becker_light.ttf");
-        typefaces.put("sans-serif", "heltar_light.ttf");
+        typefaces.put("serif", "arial.ttf");
+        typefaces.put("sans-serif", "Verdana.ttf");
     }
 
     public static String currencyParser(String price, Currency currency) {

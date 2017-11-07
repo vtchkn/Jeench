@@ -45,6 +45,6 @@ public class RaitingView extends View {
         final int xMargin = (getWidth() - size - GAP) / 2, yMargin = (getHeight() - size - GAP) / 2;
 
         canvas.drawArc(xMargin, yMargin, getWidth() - xMargin, getHeight() - yMargin, 360 - allAngle / 2, allAngle, false, allPaint);
-        canvas.drawArc(xMargin, yMargin, getWidth() - xMargin, getHeight() - yMargin, 180 - raitingAngle / 2, raitingAngle, false, raitngPaint);
+        canvas.drawArc(xMargin, yMargin, getWidth() - xMargin, getHeight() - yMargin, 45 - raitingAngle / 2, raitingAngle, false, raitngPaint);
     }
 }

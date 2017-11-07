@@ -49,12 +49,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder
 
         holder.itemPrice.setText(App.currencyParser(itemPrice, Currency.RUB));
         holder.shopName.setText(item.getShopName());
-        holder.pointDistance.setText(item.getPointDistance());
+        String pointDistance = item.getPointDistance() + " km";
+        holder.pointDistance.setText(pointDistance);
         String trim = item.getPointRank().trim().substring(0,3);
         holder.raitingView.update(Long.parseLong(trim));
         Glide.with(context)
                 .load(item.getItemImage())
-                .apply(new RequestOptions().fitCenter().centerCrop().placeholder(R.drawable.item_default).transforms(new RoundedCorners(20)))
+                .apply(new RequestOptions().centerInside().placeholder(R.drawable.item_default).transforms(new RoundedCorners(20)))
                 .into(holder.itemImage);
         Glide.with(context)
                 .load(item.getShopLogo())

@@ -4,16 +4,13 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginRight="5dp"
-        card_view:cardCornerRadius="5dp">
+        android:layout_marginTop="10dp"
+        card_view:cardCornerRadius="0dp">
 
     <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="0dp"
             >
 
         <ImageView
@@ -23,8 +20,11 @@
                 android:id="@+id/itemImage"
                 android:layout_alignParentRight="false"
                 android:layout_alignParentLeft="true"
-                android:layout_margin="10dp"
-                android:contentDescription="@string/item_default"/>
+                android:contentDescription="@string/item_default"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="15dp"/>
 
         <TextView
                 android:text="Name"
@@ -32,24 +32,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/itemName"
-                android:textStyle="bold"
                 android:textSize="16sp"
                 android:textColor="@color/titleColor"
                 android:layout_toRightOf="@+id/itemImage"
-                android:layout_alignTop="@+id/itemImage"/>
+                android:layout_alignTop="@+id/itemImage"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="11dp"/>
 
         <TextView
                 android:text="$2.42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/itemPrice"
-                android:fontFamily="monospace"
+                android:fontFamily="sans-serif"
                 android:textStyle="bold"
                 android:textColor="@color/priceColor"
                 android:layout_below="@+id/itemName"
                 android:layout_toRightOf="@+id/itemImage"
-                android:layout_above="@+id/shopName"
-                android:gravity="center_vertical"/>
+                android:textSize="16sp"
+                android:layout_marginBottom="22dp"
+                android:layout_marginLeft="-2dp"/>
 
         <TextView
                 android:text="Starbucks"
@@ -58,12 +60,13 @@
                 android:id="@+id/shopName"
                 android:textColor="@color/priceColor"
                 android:layout_toRightOf="@+id/itemImage"
-                android:fontFamily="serif"
+                android:fontFamily="sans-serif"
                 android:textStyle="bold"
-                android:layout_above="@+id/pointDistance"
-                android:layout_marginBottom="10dp"
                 android:layout_toLeftOf="@+id/fl"
-                android:layout_marginRight="2dp"/>
+                android:layout_marginRight="2dp"
+                android:textSize="14sp"
+                android:layout_below="@+id/itemPrice"
+                />
 
         <TextView
                 android:text="2 km"
@@ -71,32 +74,41 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/pointDistance"
                 android:layout_toRightOf="@+id/itemImage"
+                android:textSize="12sp"
+                android:gravity="top"
+                android:fontFamily="serif"
+                android:layout_below="@+id/shopName"
+                android:layout_marginTop="10dp"
                 android:layout_alignParentBottom="false"
-                android:layout_alignBottom="@+id/itemImage"
-                android:textSize="12sp"/>
+                android:layout_marginBottom="22dp"/>
 
         <TextView
                 android:text="@string/open_now"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
+                android:fontFamily="serif"
                 android:textColor="@color/openColor"
                 android:id="@+id/textView8"
                 android:layout_alignTop="@+id/pointDistance"
                 android:layout_toRightOf="@+id/pointDistance"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="10dp"
+                android:gravity="top"
+                android:foregroundGravity="top"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
 
         <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/pointDistance"
+                android:layout_alignBottom="@+id/itemImage"
                 android:layout_alignParentRight="true"
-                android:id="@+id/fl">
+                android:id="@+id/fl"
+                android:layout_marginRight="20dp">
 
             <com.example.evetochkin.jeench.ui.RaitingView
-                    android:layout_width="38dp"
-                    android:layout_height="38dp"
+                    android:layout_width="46dp"
+                    android:layout_height="46dp"
                     android:id="@+id/raitingView"
                     android:layout_gravity="center_vertical|center_horizontal"
                     />
